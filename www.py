@@ -4,4 +4,3 @@
 help(isinstance)
 aa = 11
 print 'aa'
-print 'hello'
