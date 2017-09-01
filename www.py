@@ -2,3 +2,4 @@
 #coding=utf-8
 
 help(isinstance)
+aa = 11

@@ -53,5 +53,3 @@ for row, pars in enumerate(list_1):
         # 用户名称
         usersname = pars[19].decode('gb2312')
 file_1.close()
-
-
