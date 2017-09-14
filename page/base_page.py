@@ -122,8 +122,13 @@ class Exebasepage():
         self.iframe('/html/body/div[7]/div[2]/iframe')
 
     def arise_wait(self, selector):
+        """
+        元素出现
+        :param selector:
+        :return:
+        """
         if ',' not in selector:
-            return WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, selector)), 'error')
+            return WebDriverWait(self.driver, 60).until(EC.presence_of_element_located((By.XPATH, selector)), 'error')
         method = selector.split(',')[0]
         selector_value = selector.split(',')[1]
         if method == "i":
@@ -144,6 +149,11 @@ class Exebasepage():
             WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, selector_value)), 'error')
 
     def visibility_wait(self, selector):
+        """
+        元素可见
+        :param selector:
+        :return:
+        """
         if ',' not in selector:
             return WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.XPATH, selector)), 'error')
         method = selector.split(',')[0]

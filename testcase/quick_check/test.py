@@ -60,14 +60,28 @@ for pars in list_1:
         # 获取不到页面元素，抛异常截图
         try:
             aa = driver.find_element_by_xpath('//ul[@class="placeul"]/li[2]/a').text
-            if text_1 != aa:
-                driver.switch_to.default_content()
-                ja = 'window.scroll(0,0)'
-                driver.execute_script(ja)
-                driver.get_screenshot_as_file(error_file1)
-                # print u'\033[31m%s \033[0m不匹配，已截图' %text_1
-                # print u'%s' % text_1
-                print u'%s不匹配，已截图' % colors.printRed(text_1)
+            try:
+                add = driver.find_element_by_id('btnAdd')
+                if add.is_displayed():
+                    add.click()
+                    text_2 = driver.find_element_by_xpath('html/body/div[5]/div[1]').text
+                    if text_2 != aa:
+                        driver.switch_to.default_content()
+                        ja = 'window.scroll(0,0)'
+                        driver.execute_script(ja)
+                        driver.get_screenshot_as_file(error_file1)
+                        # print u'\033[31m%s \033[0m不匹配，已截图' %text_1
+                        # print u'%s' % text_1
+                        print u'%s不匹配，已截图' % colors.printRed(text_1)
+            except:
+                    if text_1 != aa:
+                        driver.switch_to.default_content()
+                        ja = 'window.scroll(0,0)'
+                        driver.execute_script(ja)
+                        driver.get_screenshot_as_file(error_file1)
+                        # print u'\033[31m%s \033[0m不匹配，已截图' %text_1
+                        # print u'%s' % text_1
+                        print u'%s不匹配，已截图' % colors.printRed(text_1)
         except:
             driver.switch_to.default_content()
             ja = 'window.scroll(0,0)'
@@ -78,43 +92,43 @@ for pars in list_1:
             print u'%s不匹配，已截图' % colors.printRed(text_1)
         driver.switch_to.default_content()
     # 获取菜单
-    second_list = driver.find_elements_by_xpath('//dl[@class="leftmenu"]/dd/div')
-    for element_2 in second_list[1:]:
-        element_2.click()
-        time.sleep(1)
-        # 获取子菜单
-        bb = '//dd/ul[@class="menuson"and@style="display: block;"]/li/a'
-        third_list = driver.find_elements_by_xpath(bb)
-        for element_3 in third_list:
-            # 元素不可见跳过
-            # if not element_3.is_displayed():
-            #     continue
-            text_2 = element_3.text
-            # print text_2
-            error_file2 = mkpath + time_now + '.' + ten_id + '.' + text_2 + '.png'
-            element_3.click()
-            frame_value = driver.find_element_by_id('mainFrame')
-            driver.switch_to.frame(frame_value)
-            # 获取不到页面元素，抛异常截图
-            try:
-                bb = driver.find_element_by_xpath('//ul[@class="placeul"]/li[2]/a').text
-                if text_2 != bb:
-                    driver.switch_to.default_content()
-                    ja = 'window.scroll(0,0)'
-                    driver.execute_script(ja)
-                    driver.get_screenshot_as_file(error_file2)
-                    # print u'\033[31m%s \033[0m不匹配，已截图' %text_2
-                    # print u'%s' % text_2
-                    print u'%s不匹配，已截图' % colors.printRed(text_2)
-            except:
-                driver.switch_to.default_content()
-                ja = 'window.scroll(0,0)'
-                driver.execute_script(ja)
-                driver.get_screenshot_as_file(error_file2)
-                # print u'\033[31m%s \033[0m不匹配，已截图' %text_2
-                # print u'%s' % text_2
-                print u'%s不匹配，已截图' % colors.printRed(text_2)
-            driver.switch_to.default_content()
+    # second_list = driver.find_elements_by_xpath('//dl[@class="leftmenu"]/dd/div')
+    # for element_2 in second_list[1:]:
+    #     element_2.click()
+    #     time.sleep(1)
+    #     # 获取子菜单
+    #     bb = '//dd/ul[@class="menuson"and@style="display: block;"]/li/a'
+    #     third_list = driver.find_elements_by_xpath(bb)
+    #     for element_3 in third_list:
+    #         # 元素不可见跳过
+    #         # if not element_3.is_displayed():
+    #         #     continue
+    #         text_2 = element_3.text
+    #         # print text_2
+    #         error_file2 = mkpath + time_now + '.' + ten_id + '.' + text_2 + '.png'
+    #         element_3.click()
+    #         frame_value = driver.find_element_by_id('mainFrame')
+    #         driver.switch_to.frame(frame_value)
+    #         # 获取不到页面元素，抛异常截图
+    #         try:
+    #             bb = driver.find_element_by_xpath('//ul[@class="placeul"]/li[2]/a').text
+    #             if text_2 != bb:
+    #                 driver.switch_to.default_content()
+    #                 ja = 'window.scroll(0,0)'
+    #                 driver.execute_script(ja)
+    #                 driver.get_screenshot_as_file(error_file2)
+    #                 # print u'\033[31m%s \033[0m不匹配，已截图' %text_2
+    #                 # print u'%s' % text_2
+    #                 print u'%s不匹配，已截图' % colors.printRed(text_2)
+    #         except:
+    #             driver.switch_to.default_content()
+    #             ja = 'window.scroll(0,0)'
+    #             driver.execute_script(ja)
+    #             driver.get_screenshot_as_file(error_file2)
+    #             # print u'\033[31m%s \033[0m不匹配，已截图' %text_2
+    #             # print u'%s' % text_2
+    #             print u'%s不匹配，已截图' % colors.printRed(text_2)
+    #         driver.switch_to.default_content()
     driver.quit()
     time.sleep(1)
 file_1.close()
