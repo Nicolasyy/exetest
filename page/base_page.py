@@ -176,6 +176,11 @@ class Exebasepage():
             WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, selector_value)), 'error')
 
     def click_wait(self, selector):
+        """
+        元素可点击
+        :param selector:
+        :return:
+        """
         if ',' not in selector:
             return WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.XPATH, selector)), 'error')
         method = selector.split(',')[0]
