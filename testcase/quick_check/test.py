@@ -6,7 +6,6 @@ import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import colors
-from selenium.webdriver.common.keys import Keys
 
 time_now = time.strftime("%m.%d", time.localtime())
 file_1 = open('D:\\click\\parameter.csv', 'r')
@@ -70,7 +69,7 @@ for pars in list_1:
                 driver.get_screenshot_as_file(error_file1)
                 # print u'\033[31m%s \033[0m不匹配，已截图' %menu1
                 # print u'%s' % menu1
-                print u'%s与当前位置不匹配' % colors.printRed(menu1)
+                print u'%s-与当前位置不匹配' % colors.printRed(menu1)
                 continue
         except:
             driver.switch_to.default_content()
@@ -79,7 +78,7 @@ for pars in list_1:
             driver.get_screenshot_as_file(error_file1)
             # print u'\033[31m%s \033[0m不匹配，已截图' %menu1
             # print u'%s' % menu1
-            print u'%s不匹配，已截图' % colors.printRed(menu1)
+            print u'%s-页面报错' % colors.printRed(menu1)
             continue
         # 第二层判断是否有添加按钮，打开是否报错
         try:
@@ -101,14 +100,14 @@ for pars in list_1:
                 driver.get_screenshot_as_file(error_file1)
                 # print u'\033[31m%s \033[0m不匹配，已截图' %menu1
                 # print u'%s' % menu1
-                print u'%s不匹配，已截图' % colors.printRed(menu1)
+                print u'%s-新增页面不匹配' % colors.printRed(menu1)
         except:
             ja = 'window.scroll(0,0)'
             driver.execute_script(ja)
             driver.get_screenshot_as_file(error_file1)
             # print u'\033[31m%s \033[0m不匹配，已截图' %menu1
             # print u'%s' % menu1
-            print u'%s不匹配，已截图' % colors.printRed(menu1)
+            print u'%s-新增页面报错' % colors.printRed(menu1)
     # 获取第二栏及后面菜单
     second_list = driver.find_elements_by_xpath('//dl[@class="leftmenu"]/dd/div')
     for element_2 in second_list[1:]:
@@ -151,7 +150,7 @@ for pars in list_1:
                         driver.get_screenshot_as_file(error_file2)
                         # print u'\033[31m%s \033[0m不匹配，已截图' %menu2
                         # print u'%s' % menu2
-                        print u'%s与当前位置不匹配' % colors.printRed(menu2)
+                        print u'%s-与当前位置不匹配' % colors.printRed(menu2)
                 except:
                     driver.switch_to.default_content()
                     ja = 'window.scroll(0,0)'
@@ -181,7 +180,7 @@ for pars in list_1:
                         driver.get_screenshot_as_file(error_file2)
                         # print u'\033[31m%s \033[0m不匹配，已截图' %menu2
                         # print u'%s' % menu2
-                        print u'%s与当前位置不匹配' % colors.printRed(menu2)
+                        print u'%s-与当前位置不匹配' % colors.printRed(menu2)
                         continue
                 except:
                     driver.switch_to.default_content()
@@ -243,7 +242,7 @@ for pars in list_1:
                         driver.get_screenshot_as_file(error_file2)
                         # print u'\033[31m%s \033[0m不匹配，已截图' %menu2
                         # print u'%s' % menu2
-                        print u'%s与当前位置不匹配' % colors.printRed(menu2)
+                        print u'%s-与当前位置不匹配' % colors.printRed(menu2)
                         continue
                 except:
                     driver.switch_to.default_content()
